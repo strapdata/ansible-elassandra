@@ -303,7 +303,7 @@
 -Dlog4j2.disable.jmx=true
 -Dlog4j.skipJansi=true
 
--Djava.io.tmpdir=${ES_TMPDIR}
+#-Djava.io.tmpdir=${ES_TMPDIR}
 
 ## heap dumps
 

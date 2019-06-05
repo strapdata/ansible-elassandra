@@ -31,8 +31,7 @@ elassandra_env_file: "/etc/default/cassandra"
 elassandra_data_dir: "/var/lib/cassandra"
 cassandra_heapdump_dir: "/tmp"
 
-elassandra_seed_list:
-  - "172.16.1.4"
+elassandra_seed_list: "172.16.1.4"
 elassandra_num_token: 16
 elassandra_enable_udf: true
 

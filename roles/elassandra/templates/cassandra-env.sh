@@ -328,3 +328,4 @@ fi
 
 #JVM_OPTS="$JVM_OPTS -Des.token_ranges_bitset_cache=true"
 JVM_OPTS="$JVM_OPTS -Dcassandra.custom_query_handler_class=org.elassandra.index.EnterpriseElasticQueryHandler"
+JVM_OPTS="$JVM_OPTS -javaagent:/usr/share/cassandra/agents/jmx_prometheus_javaagent-0.3.1.jar=7500:/etc/cassandra/jmx_prometheus_exporter.yml"

@@ -1,5 +1,7 @@
 # Elassandra Ansible Role
 
+Elassandra Ansible role for Centos 7.x
+
 ## Requirements
 
 * Synchronize system clocks
