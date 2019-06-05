@@ -9,13 +9,29 @@ Elassandra Ansible role for Centos 7.x
 * Optimize disk settings
 * Set rack accordingly with fault domains
 
-## Usage
+## Role variables
 
-* Update your settings in elassandra/defaults/main.yaml
-* Update your hosts file
+See defaults/main.yml
+
+## Dependencies
+
+None
+
+## Example Playbook
+
+```yaml
+---
+- hosts: dc1
+  become: yes
+  roles:
+    - elassandra
+```
 
 ## Deploy elassandra
 
+* Update your hosts file with your settings (see elassandra/defaults/main.yaml)
+* Run ansible-playbook
+
 ```bash
-ansible-playbook elassandra.yml -i hosts -vvv -b
+ansible-playbook elassandra.yml -i hosts -v
 ```

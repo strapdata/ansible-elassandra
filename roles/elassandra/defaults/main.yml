@@ -1,16 +1,17 @@
 ---
 elassandra_version: "6.2.3.16"
 strapack_version: "6.2.3.16"
-elassandra_listen_address: "127.0.0.1"
-elassandra_broadcast_rpc_address: "127.0.0.1"
 
 elassandra_rpm: "elassandra-{{ elassandra_version }}.rpm"
 elassandra_rpm_url: "https://github.com/strapdata/elassandra/releases/download/v{{ elassandra_version }}/elassandra-{{ elassandra_version }}.rpm"
 strapack_zip_url: "https://cdn.repo.strapdata.com/enterprise/strapdata-enterprise-{{ strapack_version }}.zip"
 
+# Cassandra configuration
 elassandra_cluster_name: TestCluster
 elassandra_dc: DC1
 elassandra_rack: rack1
+elassandra_listen_address: "127.0.0.1"
+elassandra_broadcast_rpc_address: "127.0.0.1"
 
 # if you use old version of elassandra that doesn't use CASSANDRA_DAEMON environment variable,
 # set elassandra_force_es to "-e" to enable elasticsearch in the systemd script
@@ -40,7 +41,7 @@ elassandra_max_heap_size: ~
 elassandra_heap_newsize: ~
 
 # certificates managment
-elassandra_ssl: true
+elassandra_ssl: false
 elassandra_keystore_password: changeit
 
 # boostrap unitl RPC up timeout
