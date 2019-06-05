@@ -1,0 +1,45 @@
+---
+- name: Add EPEL repository
+  yum: name=epel-release
+
+- name: Install Java
+  yum: name={{item}} state=latest
+  with_items:
+       - java-1.8.0-openjdk
+
+- name: Install JNA
+  yum :
+     name: jna
+     state: present
+
+- name: Install Python PIP, wget, curl, jemalloc, unzip
+  yum: name={{item}} state=installed state=latest
+  with_items:
+   - python-pip
+   - wget
+   - curl
+   - jemalloc
+   - unzip
+   - jq
+   - pssh
+
+- name: Install perf monitoring tools
+  yum: name={{item}} state=installed state=latest
+  with_items:
+   - trafshow
+   - sysstat
+   - net-tools
+   - iotop
+   - dstat
+   - htop
+   - strace
+
+- name: Unarchive JCE in /tmp
+  become: yes
+  unarchive: src=jce_policy-8.zip dest=/tmp mode=0755
+  tags: install
+
+- name: Install JCE in <JDK>/jre/lib/security
+  become: yes
+  shell: cp /tmp/UnlimitedJCEPolicyJDK8/*.jar /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.*/jre/lib/security
+  tags: install

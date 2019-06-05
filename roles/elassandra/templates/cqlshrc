@@ -1,0 +1,11 @@
+[connection]
+factory = cqlshlib.ssl.ssl_transport_factory
+hostname = {{ elassandra_listen_address }}
+
+[ssl]
+certfile = {{ elassandra_conf }}/cacert.pem
+validate = true
+
+[authentication]
+username = admin
+password = {{ elassandra_password_admin }}

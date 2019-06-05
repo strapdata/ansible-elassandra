@@ -1,0 +1,24 @@
+---
+- name: download elassandra RPM
+  get_url:
+    url: "{{ elassandra_rpm_url }}"
+    dest: "/tmp/{{ elassandra_rpm }}"
+
+- name: install or upgrade elassandra rpm
+  yum:
+    name: "/tmp/{{ elassandra_rpm }}"
+    state: latest
+    allow_downgrade: true
+    validate_certs: no
+
+- name: download and unzip strapack
+  unarchive:
+    src: "{{ strapack_zip_url }}"
+    dest: /usr/share/cassandra
+    remote_src: yes
+    validate_certs: no
+
+- name: run strapack install.sh
+  command: "/usr/share/cassandra/strapdata-enterprise-{{ strapack_version }}/install.sh"
+  args:
+    chdir: "/usr/share/cassandra/strapdata-enterprise-{{ strapack_version }}"

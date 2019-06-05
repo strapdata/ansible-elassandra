@@ -1,0 +1,48 @@
+---
+elassandra_version: "6.2.3.16"
+strapack_version: "6.2.3.16"
+elassandra_listen_address: "127.0.0.1"
+elassandra_broadcast_rpc_address: "127.0.0.1"
+
+elassandra_rpm: "elassandra-{{ elassandra_version }}.rpm"
+elassandra_rpm_url: "https://github.com/strapdata/elassandra/releases/download/v{{ elassandra_version }}/elassandra-{{ elassandra_version }}.rpm"
+strapack_zip_url: "https://cdn.repo.strapdata.com/enterprise/strapdata-enterprise-{{ strapack_version }}.zip"
+
+elassandra_cluster_name: TestCluster
+elassandra_dc: DC1
+elassandra_rack: rack1
+
+# if you use old version of elassandra that doesn't use CASSANDRA_DAEMON environment variable,
+# set elassandra_force_es to "-e" to enable elasticsearch in the systemd script
+elassandra_main_class: "org.apache.cassandra.service.ElassandraDaemon"
+# For cassandra only nodes:
+#elassandra_main_class: "org.apache.cassandra.service.CassandraDaemon"
+
+# ensure the sytemd service is enabled or disabled
+elassandra_install_service: true
+elassandra_enable_service: true
+
+elassandra_user: cassandra
+elassandra_group: cassandra
+elassandra_password_jmx: cassandra
+elassandra_password_admin: cassandra
+elassandra_pid_dir: "/var/run/cassandra"
+elassandra_env_file: "/etc/default/cassandra"
+elassandra_data_dir: "/var/lib/cassandra"
+cassandra_heapdump_dir: "/tmp"
+
+elassandra_seed_list:
+  - "172.16.1.4"
+elassandra_num_token: 16
+elassandra_enable_udf: true
+
+# Set these variables if you want to custom the heap usage in the JVM
+elassandra_max_heap_size: ~
+elassandra_heap_newsize: ~
+
+# certificates managment
+elassandra_ssl: true
+elassandra_keystore_password: changeit
+
+# boostrap unitl RPC up timeout
+cassandra_bootstrap_timeout: 300

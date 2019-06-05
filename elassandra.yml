@@ -1,0 +1,4 @@
+---
+- hosts: dc1
+  roles:
+    - elassandra
