@@ -19,9 +19,6 @@ elassandra_main_class: "org.apache.cassandra.service.ElassandraDaemon"
 # For cassandra only nodes:
 #elassandra_main_class: "org.apache.cassandra.service.CassandraDaemon"
 
-# ensure the sytemd service is enabled or disabled
-elassandra_install_service: true
-elassandra_enable_service: true
 
 elassandra_user: cassandra
 elassandra_group: cassandra
@@ -29,12 +26,28 @@ elassandra_password_jmx: cassandra
 elassandra_password_admin: cassandra
 elassandra_pid_dir: "/var/run/cassandra"
 elassandra_env_file: "/etc/default/cassandra"
-elassandra_data_dir: "/var/lib/cassandra"
-cassandra_heapdump_dir: "/tmp"
 
 elassandra_seed_list: "172.16.1.4"
-elassandra_num_token: 16
-elassandra_enable_udf: true
+elassandra_num_token: 32
+elassandra_enable_udf: false
+
+cassandra_heapdump_dir: "/tmp"
+#elassandra_hints_directory: /var/lib/cassandra/hints
+#elassandra_commitlog_directory: /var/lib/cassandra/commitlog
+#elassandra_saved_caches_directory: /var/lib/cassandra/saved_caches
+#elassandra_data_file_directories:
+#- /var/lib/cassandra/data
+
+#elassandra_phi_convict_threshold: 10                    # default = 8
+#elassandra_commitlog_segment_size_in_mb: 64             # default 32
+#elassandra_concurrent_compactors: 4                     # default 2
+#elassandra_compaction_throughput_mb_per_sec: 250        # default 16
+#elassandra_batch_size_warn_threshold_in_kb: 64          # default 5
+#elassandra_batch_size_fail_threshold_in_kb: 640         # default 50
+#elassandra_memtable_allocation_type: offheap_objects    # default = heap_buffers
+#elassandra_memtable_flush_writers: 4                    # default = 2
+#elassandra_concurrent_reads: 128                        # default = 32
+#elassandra_concurrent_writes: 128                       # default = 32
 
 # Set these variables if you want to custom the heap usage in the JVM
 elassandra_max_heap_size: ~
@@ -43,6 +56,3 @@ elassandra_heap_newsize: ~
 # certificates managment
 elassandra_ssl: false
 elassandra_keystore_password: changeit
-
-# boostrap unitl RPC up timeout
-cassandra_bootstrap_timeout: 300

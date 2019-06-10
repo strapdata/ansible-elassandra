@@ -87,7 +87,9 @@
 #
 #action.destructive_requires_name: true
 transport.bind_host: 0.0.0.0
+jmx.enabled: true
 
+{% if elassandra_ssl|bool %}
 ssl.transport.enabled: true
 https.enabled: true
 
@@ -97,3 +99,4 @@ aaa.audit.enabled: true
 aaa.audit.appender: log
 #aaa.audit.exclude_login: kibana
 cbs.enabled: true
+{% endif %}
